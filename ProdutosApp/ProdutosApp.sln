@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services Layer", "1 - S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Data Access Layer", "2 - Data Access Layer", "{DE718A30-14E7-43E7-926A-D018E3CF4042}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProdutosApp.Data", "ProdutosApp.Data\ProdutosApp.Data.csproj", "{86E5851C-9AE0-4CBC-8957-55CCE9536796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProdutosApp.Data", "ProdutosApp.Data\ProdutosApp.Data.csproj", "{86E5851C-9AE0-4CBC-8957-55CCE9536796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
