@@ -47,7 +47,31 @@ namespace ProdutosApp.Services.Controllers
         [ProducesResponseType(typeof(ProdutosGetModel), 200)]
         public IActionResult Put([FromBody] ProdutosPutModel model)
         {
-            return Ok();
+            try
+            { 
+                var produtoRepository = new ProdutoRepository();
+                var produto = produtoRepository.PesquisaId(model.Id);          
+
+                if(produto!=null)
+                {                    
+                    produto.Nome = model.Nome;
+                    produto.Preco = model.Preco;
+                    produto.Quantidade = model.Quantidade;
+                    produto.DataHoraUltimaAtualizacao = DateTime.Now;
+
+                    produtoRepository.Alterar(produto);
+
+                    return StatusCode(200, EntityToModel(produto));
+                }
+                else
+                {
+                    return StatusCode(400, new {mensagem = "Produto inválido. Verifique o ID informado"});
+                }               
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { e.Message });
+            }       
         }
 
         #endregion
@@ -58,7 +82,26 @@ namespace ProdutosApp.Services.Controllers
         [ProducesResponseType(typeof(ProdutosGetModel), 200)]
         public IActionResult Delete(Guid? id)
         {
-            return Ok();
+            try
+            {
+                var produtoRepository = new ProdutoRepository();
+                var produto = produtoRepository.PesquisaId(id);
+
+                if (produto != null)
+                {
+                    produtoRepository.Apagar(produto);
+
+                    return StatusCode(200, EntityToModel(produto));
+                }
+                else
+                {
+                    return StatusCode(400, new { mensagem = "Produto inválido. Verifique o ID informado" });
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { e.Message });
+            }          
         }
 
         #endregion
@@ -69,14 +112,45 @@ namespace ProdutosApp.Services.Controllers
         [ProducesResponseType(typeof(List<ProdutosGetModel>), 200)]
         public IActionResult GetAll()
         {
-            return Ok();
+            try
+            {
+                var produtoRepository = new ProdutoRepository();
+                var lista = new List<ProdutosGetModel>();
+
+                foreach(var item in produtoRepository.PesquisaTodos())
+                {
+                    lista.Add(EntityToModel(item));                    
+                }
+
+                return StatusCode(200, lista);               
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { e.Message });
+            }            
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ProdutosGetModel), 200)]
         public IActionResult GetById(Guid? id)
         {
-            return Ok();
+            try
+            {
+                var produtoRepository = new ProdutoRepository();
+               
+                if(produtoRepository.PesquisaId(id)!=null)
+                {
+                    return StatusCode(200, EntityToModel(produtoRepository.PesquisaId(id)));
+                }
+                else
+                {
+                    return StatusCode(204);
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { e.Message });
+            }
         }
 
         #endregion
