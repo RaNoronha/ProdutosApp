@@ -15,7 +15,7 @@ import { EdicaoProdutosComponent } from './edicao-produtos/edicao-produtos.compo
 const routes: Routes =[
   { path:'cadastro-produtos', component: CadastroProdutosComponent },
   { path:'consulta-produtos', component: ConsultaProdutosComponent },
-  { path:'edicao-produtos', component: EdicaoProdutosComponent }
+  { path:'edicao-produtos/:id', component: EdicaoProdutosComponent }
 ]
 
 @NgModule({

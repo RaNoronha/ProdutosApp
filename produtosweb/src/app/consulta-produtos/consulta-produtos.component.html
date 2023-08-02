@@ -28,7 +28,7 @@
                     <td>{{item.dataHoraCriacao | date: 'dd/MM/yyyy HH:mm'}}</td>
                     <td>{{item.dataHoraUltimaAtualizacao | date: 'dd/MM/yyyy HH:mm'}}</td>
                     <td>
-                        <a routerLink="/edicao-produtos" class="btn btn-outline-primary btn-sm"> Editar </a>                       
+                        <a [routerLink]="['/edicao-produtos', item.id]" class="btn btn-outline-primary btn-sm"> Editar </a>                       
                         <button class="btn btn-outline-danger btn-sm" (click) = "onDelete(item.id)"> Excluir </button>
                     </td>
                 </tr>
