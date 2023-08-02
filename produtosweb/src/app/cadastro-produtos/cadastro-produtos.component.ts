@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { Validators } from '@angular/forms'
+import { Validators } from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
 import { NgxSpinnerService} from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
 })
 export class CadastroProdutosComponent 
 {
-
   mensagem: string ='';
+  
   constructor(
     private httpClient: HttpClient,
     private spinner: NgxSpinnerService
