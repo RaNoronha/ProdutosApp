@@ -1,1 +1,0 @@
-export const environment = {apiProdutos: 'http://produtosapp32-001-site1.btempurl.com/api/produtos'};
